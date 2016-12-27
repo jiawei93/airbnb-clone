@@ -1,1 +1,7 @@
-<%= current_user.email %>
+<p>Email: <%= current_user.email %></p>
+<p>Last Name: <%= current_user.last_name %></p>
+<p>First Name: <%= current_user.first_name %></p>
+<p>Phone Number: <%= current_user.phone_number %></p>
+<p>Date Of Birth: <%= current_user.dob %></p>
+
+<%= link_to "Edit", edit_user_path(@user) %>
