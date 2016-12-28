@@ -5,6 +5,7 @@ class User < ApplicationRecord
   before_save :create_remember_token
   has_many :authentications, :dependent => :destroy
   has_many :listings
+  has_many :bookings
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = User.new(name: auth_hash["info"]["name"], email: auth_hash["extra"]["raw_info"]["email"])

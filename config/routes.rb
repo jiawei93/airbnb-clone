@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   root "listings#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :listings
+  resources :listings do
+    resources :bookings, only: [:create]
+  end
+  resources :bookings, only: [:destroy]
 end
