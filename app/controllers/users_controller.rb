@@ -28,6 +28,7 @@ class UsersController < Clearance::BaseController
     # byebug
     # @user = User.find(params[:id])
     if @user.update(user_params)
+      sign_in @user
       flash[:success] = "Success!"
       redirect_to @user
     else

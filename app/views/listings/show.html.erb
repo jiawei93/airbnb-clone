@@ -3,3 +3,5 @@
 <p>Max Guest: <%= @listing.max_guest %></p>
 <p>Price: <%= @listing.price %></p>
 <%= link_to "Edit", edit_listing_path(@listing) %>
+
+<%= render "bookings/form" %>
