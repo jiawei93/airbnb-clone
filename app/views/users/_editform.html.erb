@@ -25,4 +25,8 @@
 <div class="submit-field">
   <%= form.submit %>
 </div>
+<div class="avatarphoto-field">
+  <%= form.label :avatar_photo %>
+  <%= form.file_field :avatars, multiple: true %>
+</div>
 <% end %>
