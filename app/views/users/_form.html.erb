@@ -28,7 +28,9 @@
   <%= form.label :birthday %>
   <%= form.date_field :dob %>
 </div>
-<div class="submit-field">
-  <%= form.submit %>
+
+<div class="avatarphoto-field">
+  <%= form.label :avatar_photo %>
+  <%= form.file_field :avatars, multiple: true %>
 </div>
 <% end %>

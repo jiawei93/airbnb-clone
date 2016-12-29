@@ -2,11 +2,17 @@ class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :edit, :update]
 
   def index
-    @listings = Listing.all
+    @listings = Listing.all.order(:title).page params[:page]
+    # @listings
   end
 
   def new
     @listing = Listing.new
+    # user = current_user.id
+    # if @user.customer?
+    #   flash[:notice] = "Sorry, You are not allowed"
+    #   return redirect_to some_other_url, notice: "Sorry you got no permission"
+    # end
   end
 
   def create
@@ -21,6 +27,8 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    # if
+    #   en
   end
 
   def update
@@ -38,6 +46,8 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :max_guest, :price)
+    params.require(:listing).permit(:title,:page, :description, :max_guest, :price)
   end
+
+
 end

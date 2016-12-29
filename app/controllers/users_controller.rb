@@ -38,6 +38,7 @@ class UsersController < Clearance::BaseController
   end
 
   def show
+    @bookings = @user.bookings
     render template: "users/show"
     # redirect_to user_path(current_user)
   end
@@ -53,6 +54,6 @@ class UsersController < Clearance::BaseController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :last_name, :first_name, :phone_number, :dob)
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :phone_number, :dob, {avatars: []})
   end
 end

@@ -5,3 +5,40 @@
 <p>Date Of Birth: <%= current_user.dob %></p>
 
 <%= link_to "Edit", edit_user_path(@user) %>
+<h2>Bookings</h2>
+<table>
+  <tr>
+    <th>Listing Title</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Num Guests</th>
+    <th>Total Price</th>
+    <th>Action</th>
+
+  </tr>
+
+  <% @bookings.each do |booking| %>
+  <tr>
+    <td><%= link_to booking.listing.title, booking.listing %></td>
+    <td><%= booking.start_date.strftime('%d %B %Y')%></td>
+    <td><%= booking.end_date.strftime('%d %B %Y')%></td>
+    <td><%= booking.num_guests%></td>
+    <td><%= booking.total_price%></td>
+    <td><%= link_to "Cancel Booking", booking, method: :delete %></td>
+  </tr>
+  <%end%>
+</table>
+
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <div class="thumbnail">
+<% current_user.avatars.each do |avatar| %>
+  <tr>
+    <td><%= image_tag avatar.thumb.url %></td>
+    <td valign="top">
+    </td>
+  </tr>
+<% end %>
+</div>
+</div>
+</div>
