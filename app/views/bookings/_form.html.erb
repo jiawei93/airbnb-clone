@@ -11,7 +11,7 @@
   </div>
   <div>
     <%= f.label :start_date %>
-    <%= f.date_field :start_date %>
+    <%= f.date_field :start_date, min: Date.today %>
   </div>
   <div>
     <%= f.label :end_date %>
@@ -19,4 +19,5 @@
   </div>
 
   <%= f.submit "Submit Booking" %>
+
 <% end %>

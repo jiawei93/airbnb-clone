@@ -14,10 +14,15 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  post 'braintrees/checkout'
+  # get "/client_token" do
+  #   Braintree::ClientToken.generate
+  # end
   root "listings#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :listings do
     resources :bookings, only: [:create]
   end
+  resources :braintrees, controller: "braintrees"
   resources :bookings, only: [:destroy]
 end

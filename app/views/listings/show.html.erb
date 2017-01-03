@@ -2,6 +2,13 @@
 <p>Description: <%= @listing.description %></p>
 <p>Max Guest: <%= @listing.max_guest %></p>
 <p>Price: <%= @listing.price %></p>
+<%=link_to "Make Payment", new_braintree_path %>
+
 <%= link_to "Edit", edit_listing_path(@listing) %>
 
 <%= render "bookings/form" %>
+
+
+<% @listing.photos.each do |photo| %>
+<%= image_tag photo.list %>
+<%end%>

@@ -1,4 +1,12 @@
 Rails.application.configure do
+
+  #Braintree configuration
+  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.merchant_id = ENV['BRAIN_TREE_ID']
+  Braintree::Configuration.public_key = ENV['BRAIN_TREE_KEY']
+  Braintree::Configuration.private_key = ENV['BRAIN_TREE_SECRET_KEY']
+
+
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   # In the development environment your application's code is reloaded on

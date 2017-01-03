@@ -28,6 +28,7 @@ class UsersController < Clearance::BaseController
     # byebug
     # @user = User.find(params[:id])
     if @user.update(user_params)
+      # byebug
       sign_in @user
       flash[:success] = "Success!"
       redirect_to @user
@@ -54,6 +55,6 @@ class UsersController < Clearance::BaseController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :last_name, :first_name, :phone_number, :dob, {avatars: []})
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :phone_number, :dob, :avatar)
   end
 end

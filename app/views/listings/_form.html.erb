@@ -15,5 +15,10 @@
     <%= f.label :price %>
     <%= f.number_field :price %>
   </div>
+
+  <div class="listingphoto-field">
+    <%= f.label :property_photo %>
+    <%= f.file_field :photos, multiple: true %>
+  </div>
   <%= f.submit "Submit" %>
 <% end %>

@@ -5,6 +5,13 @@ class Booking < ApplicationRecord
   validate :check_max_guests
   # validate :uniqueness_of_date_range
   before_save :check_overlapping_dates, :check_max_guests
+  validate :expiration_date_cannot_be_in_the_past
+
+  def expiration_date_cannot_be_in_the_past
+    if start_date.present? && start_date < Date.today
+      errors.add(:start_date, "can't be in the past")
+    end
+  end
 
   def check_overlapping_dates
     listing.bookings.each do |old_booking|
