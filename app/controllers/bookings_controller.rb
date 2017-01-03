@@ -2,7 +2,6 @@ class BookingsController < ApplicationController
   # before_save :check_overlapping_dates, :check_max_guests, :uniqueness_of_date_range
 
   def create
-    byebug
     @listing = Listing.find(params[:listing_id])
     @booking = current_user.bookings.new(booking_params)
     @booking.listing = @listing
