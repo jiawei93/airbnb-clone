@@ -1,5 +1,8 @@
 Rails.application.configure do
 
+  #letter_opener configuration
+  config.action_mailer.delivery_method = :letter_opener
+
   #Braintree configuration
   Braintree::Configuration.environment = :sandbox
   Braintree::Configuration.merchant_id = ENV['BRAIN_TREE_ID']
@@ -33,6 +36,17 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'localhost:3000',
+    user_name:            'wongjiawei1993@gmail.com',
+    password:             '12345678qwertyu',
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

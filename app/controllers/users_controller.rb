@@ -12,9 +12,12 @@ class UsersController < Clearance::BaseController
     @user = User.new(user_params)
     # @user.email_confirmation_token = Clearance::Token.new
     if @user.save
-      # UserMailer.registration_confirmation(@user).deliver_later
       sign_in @user
-      redirect_back_or url_after_create
+      redirect_to listings_path
+      WelcomeMailer.welcome_email(@user).deliver_now
+
+      # UserMailer.registration_confirmation(@user).deliver_later
+
     else
       render template: "users/new"
     end
