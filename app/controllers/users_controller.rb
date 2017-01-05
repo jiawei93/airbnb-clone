@@ -14,7 +14,8 @@ class UsersController < Clearance::BaseController
     if @user.save
       sign_in @user
       redirect_to listings_path
-      WelcomeMailer.welcome_email(@user).deliver_now
+      WelcomeMailer.welcome_email(@user).deliver_later(wait: 1.minute)
+      # UserJob.perform_later(user)
 
       # UserMailer.registration_confirmation(@user).deliver_later
 
