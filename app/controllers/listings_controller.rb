@@ -2,12 +2,17 @@ class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :edit, :update]
 
   def index
-    @listings = Listing.all.order(:title).page params[:page]
+    if params[:keyword]
+      @listings = Listing.main_search(params[:keyword]).page params[:page]
+    else
+      @listings = Listing.all.order(:title).page params[:page]
+    end
     # @listings
   end
 
   def new
     @listing = Listing.new
+
     # user = current_user.id
     # if @user.customer?
     #   flash[:notice] = "Sorry, You are not allowed"
